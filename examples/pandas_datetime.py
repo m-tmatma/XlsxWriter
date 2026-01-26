@@ -50,7 +50,7 @@ workbook = writer.book
 worksheet = writer.sheets["Sheet1"]
 
 # Get the dimensions of the dataframe.
-(max_row, max_col) = df.shape
+max_row, max_col = df.shape
 
 # Set the column widths, to make the dates clearer.
 worksheet.set_column(1, max_col, 20)

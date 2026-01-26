@@ -39,8 +39,7 @@ class TestAssembleVml(unittest.TestCase):
             [button],
         )
 
-        exp = _vml_to_list(
-            """
+        exp = _vml_to_list("""
                 <xml xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel">
                   <o:shapelayout v:ext="edit">
                     <o:idmap v:ext="edit" data="1"/>
@@ -68,8 +67,7 @@ class TestAssembleVml(unittest.TestCase):
                     </x:ClientData>
                   </v:shape>
                 </xml>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

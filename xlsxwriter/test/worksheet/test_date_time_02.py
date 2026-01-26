@@ -447,7 +447,7 @@ class TestConvertDateTime(unittest.TestCase):
 
         for excel_date in self.excel_dates:
             date_str = excel_date[0].rstrip("T")
-            (year, month, day) = date_str.split("-")
+            year, month, day = date_str.split("-")
 
             test_date = datetime.date(int(year), int(month), int(day))
 

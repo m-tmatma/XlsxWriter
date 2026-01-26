@@ -35,7 +35,7 @@ workbook = writer.book
 worksheet = writer.sheets[sheet_name]
 
 # Get the dimensions of the dataframe.
-(max_row, max_col) = df.shape
+max_row, max_col = df.shape
 
 # Create a chart object.
 chart = workbook.add_chart({"type": "line"})

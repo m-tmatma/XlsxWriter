@@ -45,8 +45,7 @@ class TestAssembleSharedStrings(unittest.TestCase):
 
         sharedstrings._assemble_xml_file()
 
-        exp = _xml_to_list(
-            """
+        exp = _xml_to_list("""
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="3" uniqueCount="3">
                   <si>
@@ -59,8 +58,7 @@ class TestAssembleSharedStrings(unittest.TestCase):
                     <t xml:space="preserve">abcdefg   </t>
                   </si>
                 </sst>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

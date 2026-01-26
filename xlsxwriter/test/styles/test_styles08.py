@@ -56,8 +56,7 @@ class TestAssembleStyles(unittest.TestCase):
         style._assemble_xml_file()
         workbook.fileclosed = 1
 
-        exp = _xml_to_list(
-            """
+        exp = _xml_to_list("""
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
                   <fonts count="4">
@@ -131,8 +130,7 @@ class TestAssembleStyles(unittest.TestCase):
                   <dxfs count="0"/>
                   <tableStyles count="0" defaultTableStyle="TableStyleMedium9" defaultPivotStyle="PivotStyleLight16"/>
                 </styleSheet>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

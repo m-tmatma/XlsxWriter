@@ -25,7 +25,7 @@ workbook = writer.book
 worksheet = writer.sheets["Sheet1"]
 
 # Get the dimensions of the dataframe.
-(max_row, max_col) = df.shape
+max_row, max_col = df.shape
 
 # Make the columns wider for clarity.
 worksheet.set_column(0, max_col - 1, 12)

@@ -24,7 +24,7 @@ workbook = writer.book
 worksheet = writer.sheets["Sheet1"]
 
 # Get the dimensions of the dataframe.
-(max_row, max_col) = df.shape
+max_row, max_col = df.shape
 
 # Apply a conditional format to the required cell range.
 worksheet.conditional_format(1, max_col, max_row, max_col, {"type": "3_color_scale"})

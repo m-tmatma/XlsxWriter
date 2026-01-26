@@ -44,8 +44,7 @@ class TestAssembleTable(unittest.TestCase):
 
         table._assemble_xml_file()
 
-        exp = _xml_to_list(
-            """
+        exp = _xml_to_list("""
                     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                     <table xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" id="1" name="Table1" displayName="Table1" ref="C3:F14" totalsRowCount="1">
                       <autoFilter ref="C3:F13"/>
@@ -57,8 +56,7 @@ class TestAssembleTable(unittest.TestCase):
                       </tableColumns>
                       <tableStyleInfo name="TableStyleMedium9" showFirstColumn="0" showLastColumn="0" showRowStripes="1" showColumnStripes="0"/>
                     </table>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

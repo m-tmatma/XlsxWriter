@@ -612,7 +612,7 @@ class Styles(xmlwriter.XMLwriter):
             attributes.append(("applyBorder", 1))
 
         # Check if XF format has alignment properties set.
-        (apply_align, align) = xf_format._get_align_properties()
+        apply_align, align = xf_format._get_align_properties()
 
         # Check if an alignment sub-element should be written.
         if apply_align and align:

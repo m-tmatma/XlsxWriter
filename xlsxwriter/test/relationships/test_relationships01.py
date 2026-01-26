@@ -37,8 +37,7 @@ class TestAssembleRelationships(unittest.TestCase):
 
         rels._assemble_xml_file()
 
-        exp = _xml_to_list(
-            """
+        exp = _xml_to_list("""
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
                   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
@@ -47,8 +46,7 @@ class TestAssembleRelationships(unittest.TestCase):
                   <Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>
                   <Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/calcChain" Target="calcChain.xml"/>
                 </Relationships>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

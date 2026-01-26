@@ -37,7 +37,7 @@ workbook = writer.book
 worksheet = writer.sheets["Sheet1"]
 
 # Get the dimensions of the dataframe.
-(max_row, max_col) = df.shape
+max_row, max_col = df.shape
 
 # Create a list of column headers, to use in add_table().
 column_settings = [{"header": column} for column in df.columns]

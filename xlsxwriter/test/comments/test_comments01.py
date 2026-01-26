@@ -35,8 +35,7 @@ class TestAssembleComments(unittest.TestCase):
 
         comments._assemble_xml_file([comment])
 
-        exp = _xml_to_list(
-            """
+        exp = _xml_to_list("""
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <comments xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
                   <authors>
@@ -58,8 +57,7 @@ class TestAssembleComments(unittest.TestCase):
                     </comment>
                   </commentList>
                 </comments>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

@@ -48,8 +48,7 @@ class TestAssembleDrawing(unittest.TestCase):
 
         drawing._assemble_xml_file()
 
-        exp = _xml_to_list(
-            """
+        exp = _xml_to_list("""
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <xdr:wsDr xmlns:xdr="http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
                   <xdr:twoCellAnchor>
@@ -83,8 +82,7 @@ class TestAssembleDrawing(unittest.TestCase):
                     <xdr:clientData/>
                   </xdr:twoCellAnchor>
                 </xdr:wsDr>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

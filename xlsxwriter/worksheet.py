@@ -2126,7 +2126,7 @@ class Worksheet(xmlwriter.XMLwriter):
 
         # Ensure 2nd col is larger than first.
         if first_col > last_col:
-            (first_col, last_col) = (last_col, first_col)
+            first_col, last_col = (last_col, first_col)
 
         # Don't modify the row dimensions when checking the columns.
         ignore_row = True
@@ -2485,9 +2485,9 @@ class Worksheet(xmlwriter.XMLwriter):
 
         # Swap last row/col with first row/col as necessary
         if first_row > last_row:
-            (first_row, last_row) = (last_row, first_row)
+            first_row, last_row = (last_row, first_row)
         if first_col > last_col:
-            (first_col, last_col) = (last_col, first_col)
+            first_col, last_col = (last_col, first_col)
 
         # Check that row and col are valid and store max and min values.
         if self._check_dimensions(first_row, first_col):
@@ -2550,9 +2550,9 @@ class Worksheet(xmlwriter.XMLwriter):
         """
         # Reverse max and min values if necessary.
         if last_row < first_row:
-            (first_row, last_row) = (last_row, first_row)
+            first_row, last_row = (last_row, first_row)
         if last_col < first_col:
-            (first_col, last_col) = (last_col, first_col)
+            first_col, last_col = (last_col, first_col)
 
         # Build up the autofilter area range "Sheet1!$A$1:$C$13".
         area = self._convert_name_area(first_row, first_col, last_row, last_col)
@@ -2597,13 +2597,13 @@ class Worksheet(xmlwriter.XMLwriter):
         except ValueError:
             # Convert col ref to a cell ref and then to a col number.
             col_letter = col
-            (_, col) = xl_cell_to_rowcol(col + "1")
+            _, col = xl_cell_to_rowcol(col + "1")
 
             if col >= self.xls_colmax:
                 warn(f"Invalid column '{col_letter}'")
                 return
 
-        (col_first, col_last) = self.filter_range
+        col_first, col_last = self.filter_range
 
         # Reject column if it is outside filter range.
         if col < col_first or col > col_last:
@@ -2657,13 +2657,13 @@ class Worksheet(xmlwriter.XMLwriter):
         except ValueError:
             # Convert col ref to a cell ref and then to a col number.
             col_letter = col
-            (_, col) = xl_cell_to_rowcol(col + "1")
+            _, col = xl_cell_to_rowcol(col + "1")
 
             if col >= self.xls_colmax:
                 warn(f"Invalid column '{col_letter}'")
                 return
 
-        (col_first, col_last) = self.filter_range
+        col_first, col_last = self.filter_range
 
         # Reject column if it is outside filter range.
         if col < col_first or col > col_last:
@@ -3499,9 +3499,9 @@ class Worksheet(xmlwriter.XMLwriter):
 
         # Swap last row/col for first row/col as necessary.
         if first_row > last_row:
-            (first_row, last_row) = (last_row, first_row)
+            first_row, last_row = (last_row, first_row)
         if first_col > last_col:
-            (first_col, last_col) = (last_col, first_col)
+            first_col, last_col = (last_col, first_col)
 
         # Check if the table range overlaps a previous merged or table range.
         # This is a critical file corruption error in Excel.
@@ -4024,10 +4024,10 @@ class Worksheet(xmlwriter.XMLwriter):
 
         # Swap last row/col for first row/col if necessary
         if first_row > last_row:
-            (first_row, last_row) = (last_row, first_row)
+            first_row, last_row = (last_row, first_row)
 
         if first_col > last_col:
-            (first_col, last_col) = (last_col, first_col)
+            first_col, last_col = (last_col, first_col)
 
         sqref = xl_range(first_row, first_col, last_row, last_col)
 
@@ -5014,7 +5014,7 @@ class Worksheet(xmlwriter.XMLwriter):
         if self.constant_memory:
             # This is sub-optimal but we need to create a temp file
             # with utf8 encoding in Python < 3.
-            (fd, filename) = tempfile.mkstemp(dir=self.tmpdir)
+            fd, filename = tempfile.mkstemp(dir=self.tmpdir)
             os.close(fd)
             self.row_data_filename = filename
             # pylint: disable=consider-using-with
@@ -7142,7 +7142,7 @@ class Worksheet(xmlwriter.XMLwriter):
 
     def _write_merge_cell(self, merged_range) -> None:
         # Write the <mergeCell> element.
-        (row_min, col_min, row_max, col_max) = merged_range
+        row_min, col_min, row_max, col_max = merged_range
 
         # Convert the merge dimensions to a cell range.
         cell_1 = xl_rowcol_to_cell(row_min, col_min)
@@ -7256,7 +7256,7 @@ class Worksheet(xmlwriter.XMLwriter):
     def _write_autofilters(self) -> None:
         # Function to iterate through the columns that form part of an
         # autofilter range and write the appropriate filters.
-        (col1, col2) = self.filter_range
+        col1, col2 = self.filter_range
 
         for col in range(col1, col2 + 1):
             # Skip if column doesn't have an active filter.
@@ -7517,14 +7517,14 @@ class Worksheet(xmlwriter.XMLwriter):
             if sqref != "":
                 sqref += " "
 
-            (row_first, col_first, row_last, col_last) = cells
+            row_first, col_first, row_last, col_last = cells
 
             # Swap last row/col for first row/col as necessary
             if row_first > row_last:
-                (row_first, row_last) = (row_last, row_first)
+                row_first, row_last = (row_last, row_first)
 
             if col_first > col_last:
-                (col_first, col_last) = (col_last, col_first)
+                col_first, col_last = (col_last, col_first)
 
             sqref += xl_range(row_first, col_first, row_last, col_last)
 
@@ -7903,7 +7903,7 @@ class Worksheet(xmlwriter.XMLwriter):
 
         # Move user cell selection to the panes.
         if self.selections:
-            (_, active_cell, sqref) = self.selections[0]
+            _, active_cell, sqref = self.selections[0]
             self.selections = []
 
         # Set the active pane.
@@ -7958,7 +7958,7 @@ class Worksheet(xmlwriter.XMLwriter):
 
         # Move user cell selection to the panes.
         if self.selections:
-            (_, active_cell, sqref) = self.selections[0]
+            _, active_cell, sqref = self.selections[0]
             self.selections = []
             has_selection = True
 

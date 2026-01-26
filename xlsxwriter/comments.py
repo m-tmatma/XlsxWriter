@@ -140,7 +140,7 @@ class CommentType:
         # Convert a cell reference to a row and column.
         start_cell = options.get("start_cell")
         if start_cell and isinstance(start_cell, str):
-            (start_row, start_col) = xl_cell_to_rowcol(start_cell)
+            start_row, start_col = xl_cell_to_rowcol(start_cell)
             self.start_row = start_row
             self.start_col = start_col
 

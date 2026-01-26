@@ -35,8 +35,7 @@ class TestAssembleWorkbook(unittest.TestCase):
         workbook._assemble_xml_file()
         workbook.fileclosed = 1
 
-        exp = _xml_to_list(
-            """
+        exp = _xml_to_list("""
                 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
                   <fileVersion appName="xl" lastEdited="4" lowestEdited="4" rupBuild="4505"/>
@@ -50,8 +49,7 @@ class TestAssembleWorkbook(unittest.TestCase):
                   </sheets>
                   <calcPr calcId="124519" fullCalcOnLoad="1"/>
                 </workbook>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

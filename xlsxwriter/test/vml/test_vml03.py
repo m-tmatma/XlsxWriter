@@ -37,8 +37,7 @@ class TestAssembleVml(unittest.TestCase):
 
         vml._assemble_xml_file(1, 1024, None, None, [image])
 
-        exp = _vml_to_list(
-            """
+        exp = _vml_to_list("""
                 <xml xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel">
                   <o:shapelayout v:ext="edit">
                     <o:idmap v:ext="edit" data="1"/>
@@ -67,8 +66,7 @@ class TestAssembleVml(unittest.TestCase):
                     <o:lock v:ext="edit" rotation="t"/>
                   </v:shape>
                 </xml>
-                """
-        )
+                """)
 
         got = _xml_to_list(fh.getvalue())
 

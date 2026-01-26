@@ -192,22 +192,22 @@ class Image:
         emf_marker1 = unpack("<L", data[:4])[0]
 
         if png_marker == b"PNG":
-            (image_type, width, height, x_dpi, y_dpi) = self._process_png(data)
+            image_type, width, height, x_dpi, y_dpi = self._process_png(data)
 
         elif jpg_marker == 0xFFD8:
-            (image_type, width, height, x_dpi, y_dpi) = self._process_jpg(data)
+            image_type, width, height, x_dpi, y_dpi = self._process_jpg(data)
 
         elif bmp_marker == b"BM":
-            (image_type, width, height) = self._process_bmp(data)
+            image_type, width, height = self._process_bmp(data)
 
         elif emf_marker1 == 0x9AC6CDD7:
-            (image_type, width, height, x_dpi, y_dpi) = self._process_wmf(data)
+            image_type, width, height, x_dpi, y_dpi = self._process_wmf(data)
 
         elif emf_marker1 == 1 and emf_marker == b" EMF":
-            (image_type, width, height, x_dpi, y_dpi) = self._process_emf(data)
+            image_type, width, height, x_dpi, y_dpi = self._process_emf(data)
 
         elif gif_marker == b"GIF8":
-            (image_type, width, height, x_dpi, y_dpi) = self._process_gif(data)
+            image_type, width, height, x_dpi, y_dpi = self._process_gif(data)
 
         else:
             raise UnsupportedImageFormat(

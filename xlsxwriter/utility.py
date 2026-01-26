@@ -430,7 +430,7 @@ def quote_sheetname(sheetname: str) -> str:
         # --------------------------------------------------------------------
         elif match_rule3:
             cell = match_rule3.group(1)
-            (row, col) = xl_cell_to_rowcol(cell)
+            row, col = xl_cell_to_rowcol(cell)
 
             if 0 <= row < row_max and 0 <= col < col_max:
                 requires_quoting = True

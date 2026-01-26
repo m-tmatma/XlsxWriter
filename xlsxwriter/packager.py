@@ -172,7 +172,7 @@ class Packager:
         if self.in_memory:
             os_filename = StringIO()
         else:
-            (fd, os_filename) = tempfile.mkstemp(dir=self.tmpdir)
+            fd, os_filename = tempfile.mkstemp(dir=self.tmpdir)
             os.close(fd)
 
         self.filenames.append((os_filename, xml_filename, False))

@@ -404,7 +404,7 @@ class Vml(xmlwriter.XMLwriter):
         # Set the shape index.
         shape_id = "_x0000_s" + str(shape_id)
 
-        (left, top, width, height) = self._pixels_to_points(comment.vertices)
+        left, top, width, height = self._pixels_to_points(comment.vertices)
 
         # Set the visibility.
         if comment.is_visible:
@@ -454,7 +454,7 @@ class Vml(xmlwriter.XMLwriter):
         # Set the shape index.
         shape_id = "_x0000_s" + str(shape_id)
 
-        (left, top, width, height) = self._pixels_to_points(button.vertices)
+        left, top, width, height = self._pixels_to_points(button.vertices)
 
         style = (
             f"position:absolute;"
@@ -708,7 +708,7 @@ class Vml(xmlwriter.XMLwriter):
 
     def _write_anchor(self, vertices) -> None:
         # Write the <x:Anchor> element.
-        (col_start, row_start, x1, y1, col_end, row_end, x2, y2) = vertices[:8]
+        col_start, row_start, x1, y1, col_end, row_end, x2, y2 = vertices[:8]
 
         strings = [col_start, x1, row_start, y1, col_end, x2, row_end, y2]
         strings = [str(i) for i in strings]

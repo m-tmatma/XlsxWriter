@@ -228,7 +228,7 @@ class Workbook(xmlwriter.XMLwriter):
                 {"num_format": self.default_date_format}
             )
 
-        (self.max_digit_width, self.cell_padding, self.max_col_width) = (
+        self.max_digit_width, self.cell_padding, self.max_col_width = (
             self._default_column_metrics(self.default_col_width)
         )
 
@@ -1314,7 +1314,7 @@ class Workbook(xmlwriter.XMLwriter):
 
         # Add a normalize name string to each list for sorting.
         for name_list in names:
-            (defined_name, _, sheet_name, _) = name_list
+            defined_name, _, sheet_name, _ = name_list
 
             # Normalize the defined name by removing any leading '_xmln.'
             # from internal names and lowercasing the string.
@@ -1616,7 +1616,7 @@ class Workbook(xmlwriter.XMLwriter):
                 with warnings.catch_warnings():
                     # Ignore warning for non-cell ranges like defined names.
                     warnings.simplefilter("ignore")
-                    (sheetname, cells) = self._get_chart_range(c_range)
+                    sheetname, cells = self._get_chart_range(c_range)
                     # Skip if we couldn't parse the formula.
                     if sheetname is None:
                         continue
@@ -1666,9 +1666,9 @@ class Workbook(xmlwriter.XMLwriter):
 
         # Split the cell range into 2 cells or else use single cell for both.
         if cells.find(":") > 0:
-            (cell_1, cell_2) = cells.split(":", 1)
+            cell_1, cell_2 = cells.split(":", 1)
         else:
-            (cell_1, cell_2) = (cells, cells)
+            cell_1, cell_2 = (cells, cells)
 
         # Remove leading/trailing quotes and convert escaped quotes to single.
         sheetname = sheetname.strip("'")
@@ -1677,8 +1677,8 @@ class Workbook(xmlwriter.XMLwriter):
         try:
             # Get the row, col values from the Excel ranges. We do this in a
             # try block for ranges that can't be parsed such as defined names.
-            (row_start, col_start) = xl_cell_to_rowcol(cell_1)
-            (row_end, col_end) = xl_cell_to_rowcol(cell_2)
+            row_start, col_start = xl_cell_to_rowcol(cell_1)
+            row_end, col_end = xl_cell_to_rowcol(cell_2)
         except AttributeError:
             return None, None
 
